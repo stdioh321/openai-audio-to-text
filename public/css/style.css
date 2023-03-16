@@ -11,7 +11,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
-
+audio{
+  max-width: 100%;
+}
 .spinner {
   position: absolute;
   top: 50%;
