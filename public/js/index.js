@@ -1,5 +1,6 @@
 const result = document.querySelector("#result");
 const btnSubmit = document.querySelector("button[type=submit]");
+const loadingScreen = document.querySelector('#loading-screen');
 
 function uploadUrl(event) {
   event.preventDefault();
@@ -7,15 +8,16 @@ function uploadUrl(event) {
   result.classList.remove('alert-danger');
   result.innerHTML = '';
   const urlInput = document.querySelector("#urlInput");
+  loadingScreen.classList.add('show');
   makeRequestUrl(urlInput.value);
 }
 
 function uploadAudio(event) {
   event.preventDefault();
+  loadingScreen.classList.add('show');
   result.classList.remove('alert-success');
   result.classList.remove('alert-danger');
   btnSubmit.setAttribute('disabled',true);
-  btnSubmit.classList.add('loading');
   result.innerHTML = '';
   const fileInput = document.querySelector("#audioFile");
   makeRequestFile(fileInput.files[0]);
@@ -56,7 +58,7 @@ function stopRecording() {
       type: blob.type,
       lastModified: Date.now()
     });
-
+    loadingScreen.classList.add('show');
     makeRequestFile(file)
     const player = new Audio(URL.createObjectURL(file));
     player.controls = true;
@@ -84,14 +86,14 @@ function makeRequestFile(file) {
       result.innerHTML = text || 'Vazio';
       result.classList.add('alert-success');
       btnSubmit.removeAttribute('disabled');
-      btnSubmit.classList.remove('loading');
+      loadingScreen.classList.remove('show');
     })
     .catch((error) => {
       console.log(error);
       result.innerHTML = error?.message || 'ERROR';
       result.classList.add('alert-danger');
       btnSubmit.removeAttribute('disabled');
-      btnSubmit.classList.remove('loading');
+      loadingScreen.classList.remove('show');
     });
 }
 function makeRequestUrl(urlFile = "") {
@@ -103,13 +105,13 @@ function makeRequestUrl(urlFile = "") {
       result.innerHTML = text || 'Vazio';
       result.classList.add('alert-success');
       btnSubmit.removeAttribute('disabled');
-      btnSubmit.classList.remove('loading');
+      loadingScreen.classList.remove('show');
     })
     .catch((error) => {
       console.log(error);
       result.innerHTML = error?.message || 'ERROR';
       result.classList.add('alert-danger');
       btnSubmit.removeAttribute('disabled');
-      btnSubmit.classList.remove('loading');
+      loadingScreen.classList.remove('show');
     });
 }
