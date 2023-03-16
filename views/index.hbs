@@ -31,7 +31,12 @@
         </form>
       </div>
       <div class="col-6">
-        <button class="btn btn-success" id="recordAudio">Record</button>
+        <div>
+          Grave seu audio usando o Mic
+        </div>
+        <div>
+          <button class="btn btn-success" id="recordAudio">Record</button>
+        </div>
         <hr>
         <div id="playlist"></div>
       </div>
@@ -40,8 +45,8 @@
       <div class="col-6">
         <form id="urlForm">
           <div class="form-group">
-            <label for="urlInput">Enter a URL:</label>
-            <input type="text" class="form-control" id="urlInput" placeholder="https://www.myinstants.com/media/sounds/nao-consegue-ne-moises-meme_04Iqgj4.mp3">
+            <label for="urlInput">Entre com uma URL de um arquivo de audio (mp3, wav)</label>
+            <input type="text" class="form-control" id="urlInput" placeholder="https://www.myinstants.com/media/sounds/nao-consegue-ne-moises-meme_04Iqgj4.mp3" value="https://www.myinstants.com/media/sounds/nao-consegue-ne-moises-meme_04Iqgj4.mp3">
           </div>
           <button type="submit" class="btn btn-primary">Accept</button>
         </form>
