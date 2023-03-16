@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/mic-recorder-to-mp3@2.2.1/dist/index.js"></script>
+  <script src="https://unpkg.com/mic-recorder-to-mp3@2.2.1/dist/index.js"></script>
   <script src="/js/index.js" defer></script>
 </head>
 
@@ -35,6 +35,19 @@
         <hr>
         <div id="playlist"></div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <form id="urlForm">
+          <div class="form-group">
+            <label for="urlInput">Enter a URL:</label>
+            <input type="text" class="form-control" id="urlInput" placeholder="https://www.myinstants.com/media/sounds/nao-consegue-ne-moises-meme_04Iqgj4.mp3">
+          </div>
+          <button type="submit" class="btn btn-primary">Accept</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-12 mt-2">
         <div id="result" class="alert"></div>
       </div>

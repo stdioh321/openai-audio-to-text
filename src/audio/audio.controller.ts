@@ -13,7 +13,6 @@ import { memoryStorage } from 'multer';
 
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import axios from 'axios';
 import { AudioUrlForm } from './autioUrl.form';
 
 const execPromise = promisify(exec);
@@ -45,8 +44,6 @@ export class AudioController {
       throw new InternalServerErrorException(
         error?.response?.data?.error?.message || error?.message)
     }
-
-    return 'ok';
   }
 }
 interface FileMem {
