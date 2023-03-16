@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Openai Audio to Text</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/mic-recorder-to-mp3@2.2.1/dist/index.js"></script>
+  <script src="/js/index.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <form id="audioForm">
+          <div class="form-group">
+            <label for="audioFile">Escolha o arquivo de audio:</label>
+            <input type="file" class="form-control-file" id="audioFile" name="audioFile" accept="audio/*">
+          </div>
+          <button class="btn btn-primary" type="submit">
+            <span class="sr-only">Loading...</span>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Upload
+          </button>
+        </form>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-success" id="recordAudio">Record</button>
+        <hr>
+        <div id="playlist"></div>
+      </div>
+      <div class="col-12 mt-2">
+        <div id="result" class="alert"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

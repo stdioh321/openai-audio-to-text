@@ -1,0 +1,3 @@
+button:not(.loading) .spinner-border{
+  display: none;
+}
