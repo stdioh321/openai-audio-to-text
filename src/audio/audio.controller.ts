@@ -1,13 +1,22 @@
 import {
   Controller,
+  Get,
   InternalServerErrorException,
   Post,
+  Query,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiService } from '../api/api.service';
 import { memoryStorage } from 'multer';
+
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import axios from 'axios';
+import { AudioUrlForm } from './autioUrl.form';
+
+const execPromise = promisify(exec);
 
 @Controller('audio')
 export class AudioController {
@@ -26,8 +35,20 @@ export class AudioController {
 
     }
   }
-}
+  @Get('url')
+  async fileFromUrl(@Query() query: AudioUrlForm) {
+    try {
+      const result = await this.apiService.downloadFile(query.url);
+      return this.apiService.transcript(result, 'smzinhoobichoebommesmo.mp3');
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException(
+        error?.response?.data?.error?.message || error?.message)
+    }
 
+    return 'ok';
+  }
+}
 interface FileMem {
   fieldname: string;
   originalname: string;
@@ -35,4 +56,7 @@ interface FileMem {
   mimetype: string;
   buffer: any;
   size: number;
+
 }
+
+class QueryDto { }

@@ -29,4 +29,16 @@ export class ApiService {
     };
     return (await axios(config)).data;
   }
+  async downloadFile(url) {
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+
+    return response.data;
+  };
 }
